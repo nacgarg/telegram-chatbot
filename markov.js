@@ -97,11 +97,10 @@ function writeJSON() {
         }
     });
 }
+process.on('SIGINT', exitHandler.bind(null, {exit:true}));
+process.on('uncaughtException', exitHandler.bind(null, {exit:true}));
 
-setInterval(function() {
-    writeJSON();
-}, 10000)
-process.on('SIGINT', function() {
-    console.log("Caught interrupt signal");
+process.on('exit', function() {
+    console.log("MARKOV DYING...\n");
     writeJSON();
 });
