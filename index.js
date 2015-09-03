@@ -18,7 +18,7 @@ api.on('message', function(message) {
         } else if (message.text == '/data') {
             api.sendMessage({
                 chat_id: message.chat.id,
-                text: JSON.stringify(data, null, 2)
+                text: JSON.stringify(markov.getData(), null, 2)
             })
         } else if (message.text.slice(0, 6) === 'markov') {
             api.sendMessage({

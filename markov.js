@@ -81,6 +81,9 @@ module.exports = {
             }
         }
         return generate(words[0]);
+    },
+    getData: function() {
+    	return data;
     }
 }
 
