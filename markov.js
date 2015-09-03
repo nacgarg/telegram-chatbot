@@ -3,8 +3,9 @@ var END = "18fb21-t92ddb";
 var data = {};
 var fs = require('fs');
 var pos = require('pos');
+
 if (fs.existsSync('data.json')) {
-    data = JSON.parse(fs.readFileSync('data.json'));
+    JSON.parse(fs.readFileSync('data.json', 'utf-8'));
 }
 
 
@@ -83,12 +84,11 @@ module.exports = {
         return generate(words[0]);
     },
     getData: function() {
-    	return data;
+        return data;
     }
 }
 
-process.on('SIGINT', function() {
-    console.log("Caught interrupt signal");
+function writeJSON() {
     fs.writeFile('data.json', JSON.stringify(data, null, 4), function(err) {
         if (err) {
             console.log(err);
@@ -96,4 +96,12 @@ process.on('SIGINT', function() {
             process.exit();
         }
     });
+}
+
+setInterval(function() {
+    writeJSON();
+}, 10000)
+process.on('SIGINT', function() {
+    console.log("Caught interrupt signal");
+    writeJSON();
 });
