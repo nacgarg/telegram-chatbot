@@ -97,8 +97,12 @@ function writeJSON() {
         }
     });
 }
-process.on('SIGINT', exitHandler.bind(null, {exit:true}));
-process.on('uncaughtException', exitHandler.bind(null, {exit:true}));
+process.on('SIGINT', function() {
+    process.exit();
+});
+process.on('uncaughtException', function() {
+    process.exit();
+});
 
 process.on('exit', function() {
     console.log("MARKOV DYING...\n");
