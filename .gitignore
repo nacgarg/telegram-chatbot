@@ -28,6 +28,7 @@ node_modules
 
 # Secret token
 token.secret
+.env
 
 shakespeare.txt
 data.json

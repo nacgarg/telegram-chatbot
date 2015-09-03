@@ -1,10 +1,10 @@
+require('dotenv').load();
+
 var telegram = require('telegram-bot-api');
-var pos = require('pos');
-var fs = require('fs');
 var markov = require('./markov');
 
 var api = new telegram({
-    token: fs.readFileSync('token.secret'),
+    token: process.env.TELEGRAM_TOKEN,
     updates: {
         enabled: true
     }
