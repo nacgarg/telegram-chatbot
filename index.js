@@ -11,9 +11,9 @@ var api = new telegram({
 });
 
 api.on('message', function(message) {
-	message.text = message.text.toLowerCase();
     console.log(message);
     if (message.text) {
+    	message.text = message.text.toLowerCase();
         if (message.text == '/data') {
             api.sendMessage({
                 chat_id: message.chat.id,

@@ -92,19 +92,14 @@ function writeJSON() {
     fs.writeFile('data.json', JSON.stringify(data, null, 4), function(err) {
         if (err) {
             console.log(err);
-        } else {
-            process.exit();
         }
     });
 }
-process.on('SIGINT', function() {
-    process.exit();
-});
-process.on('uncaughtException', function() {
-    process.exit();
-});
+
+setInterval(function() {
+    writeJSON();
+}, 10000);
 
 process.on('exit', function() {
     console.log("MARKOV DYING...\n");
-    writeJSON();
 });
