@@ -11,11 +11,10 @@ var api = new telegram({
 });
 
 api.on('message', function(message) {
+	message = messsage.toLowerCase();
     console.log(message);
     if (message.text) {
-        if (message.text == '/reset') {
-            data = {}
-        } else if (message.text == '/data') {
+        if (message.text == '/data') {
             api.sendMessage({
                 chat_id: message.chat.id,
                 text: JSON.stringify(markov.getData(), null, 2)
@@ -27,9 +26,7 @@ api.on('message', function(message) {
             });
             markov.learn(message.text.substring(6));
         } else {
-            if (message.text) {
-                markov.learn(message.text);
-            }
+            markov.learn(message.text);
         }
     }
 
