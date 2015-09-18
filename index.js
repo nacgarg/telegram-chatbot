@@ -19,7 +19,7 @@ api.on('message', function(message) {
 		api.sendMessage({chat_id:message.chat.id,text:"lurf you are gibbon, not scrub"});
 		return;
 		}
-if(message.from.first_name=="Nach"){
+if(message.from.first_name=="Nachi"){
                 api.sendMessage({chat_id:message.chat.id,text:"fibbonachiketa you are TOTAL scrub"});
                 return;
                 }
