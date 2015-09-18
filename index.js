@@ -15,16 +15,23 @@ api.on('message', function(message) {
     if (message.text) {
     	message.text = message.text.toLowerCase();
         if (message.text == '/data') {
+		if(message.from.first_name=="Lurf"){
+		api.sendMessage({chat_id:message.chat.id,text:"lurf you are gibbon, not scrub"});
+		return;
+		}
+if(message.from.first_name=="Nach"){
+                api.sendMessage({chat_id:message.chat.id,text:"fibbonachiketa you are TOTAL scrub"});
+                return;
+                }
             api.sendMessage({
                 chat_id: message.chat.id,
-                text: JSON.stringify(markov.getData(), null, 2)
+                text: "Nice try, " + message.from.first_name + ", you filthy skrub."
             })
         } else if (message.text.slice(0, 6) === 'markov') {
             api.sendMessage({
                 chat_id: message.chat.id,
                 text: markov.respond(message.text.substring(6))
             });
-            markov.learn(message.text.substring(6));
         } else {
             markov.learn(message.text);
         }

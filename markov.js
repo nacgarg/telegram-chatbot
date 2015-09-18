@@ -5,7 +5,7 @@ var fs = require('fs');
 var pos = require('pos');
 
 if (fs.existsSync('data.json')) {
-    JSON.parse(fs.readFileSync('data.json', 'utf-8'));
+    var data = JSON.parse(fs.readFileSync('data.json', 'utf-8'));
 }
 
 
