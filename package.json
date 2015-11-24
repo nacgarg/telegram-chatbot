@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^1.2.0",
-    "pos": "^0.3.0",
-    "telegram-bot-api": "*"
+    "node-telegram-bot-api": "^0.17.0",
+    "pos": "^0.3.0"
   }
 }
