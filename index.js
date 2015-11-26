@@ -13,6 +13,7 @@ var bot = new TelegramBot(process.env.TELEGRAM_TOKEN, {
 });
 
 bot.onText(/^\/markov(?:@automod_bot)? (.*)$/, function (msg, match) {
+    console.log("recieved");
     var fromId = msg.chat.id;
     bot.sendMessage(fromId, markov.respond(match[1]), {
         parse_mode: 'markdown'
@@ -21,7 +22,7 @@ bot.onText(/^\/markov(?:@automod_bot)? (.*)$/, function (msg, match) {
 
 bot.on('message', function (msg) {
     var fromId = msg.chat.id;
-    if (msg.text && msg.text.indexOf('/markov') === -1) {
+    if (msg.text && msg.indexOf('/markov') === -1) {
         markov.learn(msg.text);
     }
 });
